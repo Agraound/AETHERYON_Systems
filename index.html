@@ -1,191 +1,1250 @@
-<!-- HTML editado de la web de Agraound con mejoras de identidad y estructura IA-->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>AETHERYON Systems</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERYON Systems | Desarrollo & Business Intelligence para Startups</title>
     <style>
-      blockquote {
-        color: #f0f0f0;
-        font-style: italic;
-        font-size: 1.1em;
-        line-height: 1.6em;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-cyan: #00f7ff;
+            --primary-purple: #b847ff;
+            --primary-blue: #4785ff;
+            --bg-dark: #0a0e1a;
+            --bg-card: rgba(15, 20, 35, 0.6);
+            --text-primary: #e0e6ff;
+            --text-secondary: #8b95b8;
+            --accent-green: #00ff88;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(71, 133, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(184, 71, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 247, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: 
+                linear-gradient(rgba(0, 247, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 247, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 20s infinite ease-in-out;
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, -100vh); opacity: 0; }
+        }
+        
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .mission {
+            font-size: 1.2rem;
+            color: var(--primary-cyan);
+            margin: 20px auto;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 20px 0;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 20px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(0, 247, 255, 0.05);
+        }
+        
+        nav a {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, rgba(71, 133, 255, 0.1), rgba(184, 71, 255, 0.1));
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 25px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(0, 247, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            border-radius: 50%;
+        }
+        
+        nav a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        nav a:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* CTA Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+            border: none;
+            border-radius: 30px;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0, 247, 255, 0.4);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        
+        .cta-btn::after {
+            content: '→';
+            margin-left: 10px;
+            transition: margin-left 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(0, 247, 255, 0.6);
+        }
+        
+        .cta-btn:hover::after {
+            margin-left: 15px;
+        }
+        
+        .cta-secondary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 247, 255, 0.05), transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 12px 48px rgba(0, 247, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            margin: 30px 0 15px 0;
+            color: var(--primary-cyan);
+        }
+        
+        p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, rgba(71, 133, 255, 0.05), rgba(184, 71, 255, 0.05));
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Pricing Tables */
+        .pricing-container {
+            margin: 40px 0;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            margin: 30px 0;
+        }
+        
+        .pricing-table thead {
+            background: linear-gradient(135deg, rgba(71, 133, 255, 0.2), rgba(184, 71, 255, 0.2));
+        }
+        
+        .pricing-table th {
+            padding: 20px;
+            text-align: left;
+            color: var(--primary-cyan);
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--primary-cyan);
+        }
+        
+        .pricing-table td {
+            padding: 20px;
+            background: rgba(15, 20, 35, 0.4);
+            border-left: 1px solid rgba(0, 247, 255, 0.1);
+            font-size: 1rem;
+        }
+        
+        .pricing-table td:first-child {
+            border-left: 3px solid var(--primary-cyan);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .pricing-table tr:hover td {
+            background: rgba(0, 247, 255, 0.05);
+        }
+        
+        .price-tag {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .package-card {
+            background: linear-gradient(135deg, rgba(71, 133, 255, 0.08), rgba(184, 71, 255, 0.08));
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-cyan), var(--primary-purple));
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .package-card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 15px 50px rgba(0, 247, 255, 0.4);
+            transform: scale(1.03);
+        }
+        
+        .package-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin: 20px 0;
+        }
+        
+        .package-save {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .package-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .package-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .package-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: linear-gradient(90deg, rgba(0, 247, 255, 0.08), transparent);
+            border-left: 3px solid var(--primary-cyan);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefits-list li:hover {
+            background: linear-gradient(90deg, rgba(0, 247, 255, 0.15), transparent);
+            transform: translateX(10px);
+        }
+        
+        .icon-emoji {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonial {
+            background: linear-gradient(135deg, rgba(71, 133, 255, 0.05), rgba(184, 71, 255, 0.05));
+            border-left: 4px solid var(--primary-purple);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial footer {
+            margin-top: 15px;
+            color: var(--primary-cyan);
+            font-style: normal;
+            font-weight: 600;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), rgba(184, 71, 255, 0.1));
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            color: var(--text-secondary);
+        }
+        
+        footer p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            
+            nav {
+                flex-direction: column;
+                border-radius: 20px;
+            }
+            
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .package-price {
+                font-size: 2rem;
+            }
+        }
+        
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        
+        .small-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
     </style>
-  </head>
-  <body class="is-preload">
-    <div id="wrapper">
-      <!-- Brand Logo -->
-      <img class="brand" src="./images/brand.png" alt="Agraound Logo" />
-
-      <!-- Nav -->
-      <nav id="nav">
-        <a href="#" class="icon solid fa-home"><span>Inicio</span></a>
-        <a href="#work" class="icon solid fa-folder"><span>Proyectos</span></a>
-        <a href="#services" class="icon solid fa-cogs"><span>Servicios</span></a>
-        <a href="#testimonios" class="icon solid fa-users"><span>Testimonios</span></a>
-        <a href="#agendar" class="icon solid fa-calendar"><span>Agendar</span></a>
-        <!--<a href="#contact" class="icon solid fa-envelope"><span>Contacto</span></a>-->
-        <a href="https://www.linkedin.com/in/gomezguido278/" class="icon brands fa-linkedin"><span>LinkedIn</span></a>
-      </nav>
-
-      <!-- Main -->
-      <div id="main">
-        <!-- Me -->
-        <article id="home" class="panel intro">
-          <header>
-            <h1>Guido Miguel Gómez</h1>
-            <p>
-              Consultor e Instructor en Business Intelligence<br />
-              Storytelling Industrial & Específico<br /><b>contacto@agraound.site</b>
-              <br /><b>Desarrollo específico</b>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="logo">AETHERYON</h1>
+            <p class="tagline">Desarrollo & Business Intelligence para Startups</p>
+            <p class="mission">
+                Potenciamos tu startup con tecnología robusta, análisis de datos accionables<br>
+                y capacitación que acelera tu productividad
             </p>
-            <button class="get-started" onclick="window.location.href='#services'">
-              Empecemos <i class="fas fa-arrow-right"></i>
-            </button>
-          </header>
-          <a href="#work" class="jumplink pic">
-            <span class="arrow icon solid fa-chevron-right"><span>Ver proyectos</span></span>
-            <img src="images/me.jpg" alt="Guido Gómez" />
-          </a>
-        </article>
-
-        <!-- Work -->
-        <article id="work" class="panel">
-          <header>
-            <h2>Proyectos</h2>
-          </header>
-          <p>
-            Descubre el trabajo de Guido en Agraound - AETHERYON Systems, un experto en modelos
-            semánticos y análisis de datos con habilidades en DAX, Excel, Power
-            BI, T-SQL, Python y Figma. Esta galería presenta una colección
-            visual de sus proyectos y herramientas clave, incluyendo diseños en
-            Figma, paneles en Power BI, y configuraciones en Azure Data Studio,
-            VS Code, MSSQL, MySQL, MongoDB y PostgreSQL. Explora la fusión de
-            diseño UX/UI y análisis de datos en una selección del portafolio que
-            muestran la creatividad y precisión en cada proyecto.
-          </p>
-          <section>
-            <div class="row gallery-projects"></div>
-          </section>
-        </article>
-        <div class="modal-container d-none">
-          <button class="btn-close-modal" onclick="closeModal()">x</button>
-          <div class="modal-img">
-            <button class="back" onclick="backImg()">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                class="bi bi-arrow-left-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-                />
-              </svg>
-            </button>
-            <button class="next" onclick="nextImg()">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                class="bi bi-arrow-right-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
-                />
-              </svg>
-            </button>
-            <p class="index-gallery"></p>
-          </div>
-        </div>
-
-
-        <!-- Servicios -->
-        <article id="services" class="panel">
-          <header>
-            <h2>Servicios</h2>
-          </header>
-          <ul>
-            <li><strong>AIS (Agraound Insight Service):</strong> Dashboards, KPIs y visualización estratégica de datos.</li>
-            <li><strong>ADI (Agraound Data Intelligence):</strong> Desarrollo en Python, automatización de reportes, manejo de estructuras de datos complejas.</li>
-            <li><strong>Capacitaciones y workshops:</strong> Excel, Power BI, Storytelling de Datos.</li>
-          </ul>
-        </article>
-
-        <!-- Testimonios -->
-        <article id="testimonios" class="panel">
-          <header>
-            <h2>Testimonios</h2>
-          </header>
-          <blockquote>
-            "Gracias a Guido pudimos visualizar todo el flujo de ventas con claridad y tomar decisiones claves cada semana." <br />
-            <footer>– Cliente sector retail</footer>
-          </blockquote>
-          <blockquote>
-            "Explica lo complejo con una claridad que empodera. Recomiendo sus clases y consultorías." <br />
-            <footer>– Participante Bootcamp Excel</footer>
-          </blockquote>
-        </article>
-
-        <!-- Calendly -->
-        <article id="agendar" class="panel">
-          <header>
-            <h2>Agendá una reunión</h2>
-          </header>
-          <p>
-            ¿Querés una consulta personalizada o una reunión estratégica? Accedé a mi agenda y coordiná directamente:
-          </p>
-          <a href="https://calendly.com/guido-agraound" target="_blank" class="button primary">
-            Agendar en Calendly
-          </a>
-        </article>
-
-        <!-- Contacto -->
-        <article id="contact" class="panel">
-          <header>
-            <h2>Contactame</h2>
-          </header>
-          <form action="mailto:contacto@agraound.site" method="get">
-            <div class="row">
-              <div class="col-6 col-12-medium">
-                <input type="text" name="name" placeholder="Nombre" required />
-              </div>
-              <div class="col-6 col-12-medium">
-                <input type="email" name="email" placeholder="Email" required />
-              </div>
-              <div class="col-12">
-                <textarea name="message" placeholder="Tu mensaje" rows="6" required></textarea>
-              </div>
-              <div class="col-12">
-                <button class="get-started" type="submit">
-                  Enviar <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
+            <p class="contact-info">
+                <strong>Guido Miguel Gómez</strong> | Consultor & Desarrollador<br>
+                📧 contacto@agraound.site | CUIT: 20397656900
+            </p>
+            <div>
+                <a href="#pricing" class="cta-btn">Ver Pricing</a>
+                <a href="#agendar" class="cta-btn cta-secondary">Agendar Consulta</a>
             </div>
-          </form>
-        </article>
-      </div>
-
-      <!-- Footer -->
-      <div id="footer">
-        <ul class="copyright">
-          <li>© 2024 - 2025 Agraound. Todos los derechos reservados.</li>
-          <li>"Tecnologia con forma humana"</li>
-          <li>CUIT: 20397656900</li>
-          <li>.</li>
-        </ul>
-      </div>
+        </header>
+        
+        <nav>
+            <a href="#por-que">¿Por qué AETHERYON?</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#paquetes">Paquetes</a>
+            <a href="#capacitaciones">Capacitaciones</a>
+            <a href="#agendar">Agendar</a>
+            <a href="https://www.linkedin.com/in/gomezguido278/" target="_blank">LinkedIn</a>
+        </nav>
+        
+        <section id="por-que" class="card">
+            <div class="card-content">
+                <h2>¿Por qué elegir AETHERYON Systems?</h2>
+                <p>
+                    Somos una consultora y desarrolladora tecnológica especializada en ofrecer soluciones integrales 
+                    y escalables para empresas en fase de crecimiento. Transformamos ideas en productos digitales robustos.
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-title">Desarrollo a Medida</div>
+                        <div class="feature-desc">
+                            Aplicaciones web y móviles con Node.js y Flet (Dart). 
+                            Ideales para MVPs y plataformas escalables.
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Data Driven</div>
+                        <div class="feature-desc">
+                            Transformamos datos en insights claros con pipelines, 
+                            dashboards en Power BI y bases de datos optimizadas.
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <div class="feature-title">Capacitación Técnica</div>
+                        <div class="feature-desc">
+                            Entrenamos a tu equipo en Excel, SQL, Power BI y Python 
+                            con metodología práctica y resultados medibles.
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-title">Automatización</div>
+                        <div class="feature-desc">
+                            Automatizamos procesos repetitivos para que tu equipo 
+                            se enfoque en lo estratégico.
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Ideal para startups que buscan:</h3>
+                <ul class="benefits-list">
+                    <li><span class="icon-emoji">✓</span> Automatizar procesos y aumentar eficiencia</li>
+                    <li><span class="icon-emoji">✓</span> Tomar decisiones basadas en datos reales</li>
+                    <li><span class="icon-emoji">✓</span> Desarrollar software rápido y de calidad</li>
+                    <li><span class="icon-emoji">✓</span> Formar equipos técnicos más fuertes y autónomos</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="servicios" class="card">
+            <div class="card-content">
+                <h2>Servicios Core</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <div class="feature-title">Desarrollo de Aplicaciones</div>
+                        <div class="feature-desc">
+                            MVP con Node.js o Flet (Dart), UI responsiva, backend robusto y despliegue completo.
+                        </div>
+                        <p class="price-tag">Desde $2,500</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-title">Análisis de Datos & Pipelines</div>
+                        <div class="feature-desc">
+                            ETL, procesamiento, limpieza y automatización de flujos de datos complejos.
+                        </div>
+                        <p class="price-tag">Desde $1,800</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🗄️</div>
+                        <div class="feature-title">Bases de Datos</div>
+                        <div class="feature-desc">
+                            Diseño, modelado, implementación y administración (SQL o NoSQL).
+                        </div>
+                        <p class="price-tag">Desde $1,200</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">Dashboards & BI</div>
+                        <div class="feature-desc">
+                            Dashboards interactivos web o Power BI con reportes automatizados y KPIs.
+                        </div>
+                        <p class="price-tag">Desde $900</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">Capacitaciones Empresariales</div>
+                        <div class="feature-desc">
+                            Cursos prácticos personalizados de 8-24 horas en Excel, SQL, Power BI, Python.
+                        </div>
+                        <p class="price-tag">Desde $600</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing" class="card">
+            <div class="card-content">
+                <h2>Pricing Detallado por Servicio</h2>
+                <p class="small-text">
+                    *Precios en USD. Varían según complejidad, tiempo y nivel de personalización. 
+                    Planes de pago flexibles disponibles.
+                </p>
+                
+                <h3>🚀 Desarrollo de Aplicaciones</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Paquete</th>
+                            <th>Alcance</th>
+                            <th>Timeline</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MVP Essentials</strong></td>
+                            <td>App básica Node.js/Flet • Hasta 3 módulos • API REST • UI responsiva • 1 mes soporte</td>
+                            <td>4-6 semanas</td>
+                            <td class="price-tag">$2,500 - $4,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Growth Platform</strong></td>
+                            <td>App escalable • 8 módulos • Auth JWT • Base de datos • Panel admin • CI/CD • 3 meses soporte</td>
+                            <td>8-10 semanas</td>
+                            <td class="price-tag">$4,500 - $7,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enterprise Ready</strong></td>
+                            <td>Microservicios • APIs avanzadas • Notificaciones • Integraciones • Testing • 6 meses soporte</td>
+                            <td>12-16 semanas</td>
+                            <td class="price-tag">$8,000 - $15,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>📊 Análisis de Datos & Pipelines</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Componentes</th>
+                            <th>Tecnologías</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pipeline Básico</strong></td>
+                            <td>ETL simple • 3-5 fuentes • Limpieza • Storage cloud</td>
+                            <td>Python, Pandas, PostgreSQL, Airflow</td>
+                            <td class="price-tag">$1,800 - $3,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pipeline Avanzado</strong></td>
+                            <td>ETL complejo • +5 fuentes • Automatización • Monitoreo • Alertas</td>
+                            <td>AWS/GCP, Docker, Kubernetes</td>
+                            <td class="price-tag">$3,500 - $5,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Análisis Predictivo</strong></td>
+                            <td>Modelos ML básicos • Dashboards predictivos • Reportes automáticos</td>
+                            <td>Scikit-learn, TensorFlow, Power BI</td>
+                            <td class="price-tag">$4,000 - $6,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>🗃️ Bases de Datos</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Servicios Incluidos</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Diseño & Modelado</strong></td>
+                            <td>Arquitectura DB • Diagrama ER • Optimización consultas • Documentación completa</td>
+                            <td class="price-tag">$1,200 - $2,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementación Completa</strong></td>
+                            <td>Diseño + Implementación • Migración datos • Backup strategy • Seguridad</td>
+                            <td class="price-tag">$2,500 - $3,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mantenimiento Mensual</strong></td>
+                            <td>Monitoreo 24/7 • Optimización continua • Soporte técnico • Updates</td>
+                            <td class="price-tag">$400 - $800/mes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>📈 Dashboards & Business Intelligence</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Nivel</th>
+                            <th>Características</th>
+                            <th>Entregables</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Starter</strong></td>
+                            <td>Hasta 5 reportes • 3 conexiones • Visualización básica</td>
+                            <td>Power BI Report • .pbix file • Docs</td>
+                            <td class="price-tag">$900 - $1,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Business</strong></td>
+                            <td>Reportes interactivos • Auto-actualización • +10 KPIs • Alertas</td>
+                            <td>Dashboard completo • Scheduling • Training</td>
+                            <td class="price-tag">$1,800 - $2,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enterprise</strong></td>
+                            <td>Múltiples dashboards • Integración APIs • Predictive analytics • Custom visuals</td>
+                            <td>Solución completa • 6 meses soporte • App móvil</td>
+                            <td class="price-tag">$3,000 - $5,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="capacitaciones" class="card">
+            <div class="card-content">
+                <h2>🎓 Capacitaciones Profesionales</h2>
+                <p>Programas intensivos presenciales o virtuales con certificación</p>
+                
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Duración</th>
+                            <th>Contenido Principal</th>
+                            <th>Nivel</th>
+                            <th>Precio/persona</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Excel Avanzado</strong></td>
+                            <td>12 horas</td>
+                            <td>Power Query • Dashboards interactivos • Macros • Análisis avanzado</td>
+                            <td>Intermedio-Avanzado</td>
+                            <td class="price-tag">$250</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SQL para Negocios</strong></td>
+                            <td>16 horas</td>
+                            <td>Consultas complejas • Optimización • ETL processes • Data modeling</td>
+                            <td>Principiante-Intermedio</td>
+                            <td class="price-tag">$300</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power BI Completo</strong></td>
+                            <td>20 horas</td>
+                            <td>DAX avanzado • Data modeling • Custom visuals • Power Service</td>
+                            <td>Todos los niveles</td>
+                            <td class="price-tag">$400</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Python para Data</strong></td>
+                            <td>24 horas</td>
+                            <td>Pandas, NumPy • Visualización • APIs • Machine Learning básico</td>
+                            <td>Principiante-Intermedio</td>
+                            <td class="price-tag">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="features-grid" style="margin-top: 30px;">
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-title">Grupos (5+ personas)</div>
+                        <div class="feature-desc">
+                            <span class="highlight">15% de descuento</span> en capacitaciones grupales
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏢</div>
+                        <div class="feature-title">Pack Empresa</div>
+                        <div class="feature-desc">
+                            4 cursos + certificaciones: <span class="highlight">$1,200/persona</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="paquetes" class="card">
+            <div class="card-content">
+                <h2>💎 Paquetes Integrados para Startups</h2>
+                <p>Soluciones completas con descuentos especiales por contratación múltiple</p>
+                
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <div class="package-name">🚀 Launch Pack</div>
+                        <div class="package-price">
+                            $4,500
+                            <span class="package-save">Ahorro 15%</span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 15px 0;">
+                            <strong>Ideal para:</strong> Startups pre-seed
+                        </p>
+                        <ul class="package-list">
+                            <li>MVP Essentials (App completa)</li>
+                            <li>Pipeline Básico de datos</li>
+                            <li>Dashboard Starter en Power BI</li>
+                            <li>Documentación técnica completa</li>
+                            <li>1 mes de soporte incluido</li>
+                        </ul>
+                        <a href="#agendar" class="cta-btn" style="width: 100%; text-align: center; margin-top: 20px;">Solicitar</a>
+                    </div>
+                    
+                    <div class="package-card">
+                        <div class="package-name">📈 Scale Pack</div>
+                        <div class="package-price">
+                            $9,800
+                            <span class="package-save">Ahorro 20%</span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 15px 0;">
+                            <strong>Ideal para:</strong> Startups en crecimiento
+                        </p>
+                        <ul class="package-list">
+                            <li>Growth Platform (App escalable)</li>
+                            <li>Pipeline Avanzado con automatización</li>
+                            <li>Dashboard Business interactivo</li>
+                            <li>Capacitación para tu equipo (2 cursos)</li>
+                            <li>Base de datos optimizada</li>
+                            <li>3 meses de soporte premium</li>
+                        </ul>
+                        <a href="#agendar" class="cta-btn" style="width: 100%; text-align: center; margin-top: 20px;">Solicitar</a>
+                    </div>
+                    
+                    <div class="package-card">
+                        <div class="package-name">🏆 Transformation Pack</div>
+                        <div class="package-price">
+                            $18,000
+                            <span class="package-save">Ahorro 25%</span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 15px 0;">
+                            <strong>Ideal para:</strong> Startups scaling up
+                        </p>
+                        <ul class="package-list">
+                            <li>Enterprise Ready (Arquitectura completa)</li>
+                            <li>Análisis Predictivo con ML</li>
+                            <li>Dashboard Enterprise multi-plataforma</li>
+                            <li>Implementación completa de DB</li>
+                            <li>Training completo del equipo (4 cursos)</li>
+                            <li>CI/CD y DevOps setup</li>
+                            <li>6 meses de soporte empresarial</li>
+                            <li>Consultoría estratégica mensual</li>
+                        </ul>
+                        <a href="#agendar" class="cta-btn" style="width: 100%; text-align: center; margin-top: 20px;">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <div class="card-content">
+                <h2>📋 Condiciones Comerciales</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <div class="feature-title">Forma de Pago</div>
+                        <div class="feature-desc">
+                            40% al inicio<br>
+                            30% al avance<br>
+                            30% en entrega final
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-title">Garantías</div>
+                        <div class="feature-desc">
+                            NDA estándar incluido<br>
+                            Soporte post-entrega<br>
+                            Confidencialidad total
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-title">Personalización</div>
+                        <div class="feature-desc">
+                            Todos los paquetes son<br>
+                            100% personalizables<br>
+                            según tus necesidades
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Facturación</div>
+                        <div class="feature-desc">
+                            IVA incluido si aplica<br>
+                            Factura A/B disponible<br>
+                            CUIT: 20397656900
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <div class="card-content">
+                <h2>🎯 Propuesta de Valor Añadido</h2>
+                <p><strong>Para startups que contraten antes de fin de mes:</strong></p>
+                <ul class="benefits-list">
+                    <li><span class="icon-emoji">✅</span> <strong>1 hora de consultoría tecnológica gratuita</strong> - Evaluación de arquitectura y roadmap</li>
+                    <li><span class="icon-emoji">✅</span> <strong>Setup de analytics básico incluido</strong> - Google Analytics + Mixpanel configurados</li>
+                    <li><span class="icon-emoji">✅</span> <strong>Certificado de cumplimiento técnico</strong> - Documentación oficial del proyecto</li>
+                    <li><span class="icon-emoji">✅</span> <strong>Introducción a nuestra red de inversores</strong> - Conexiones valiosas para tu startup</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="testimonios" class="card">
+            <div class="card-content">
+                <h2>💬 Lo que dicen nuestros clientes</h2>
+                <div class="testimonial">
+                    "Gracias a Guido pudimos visualizar todo el flujo de ventas con claridad y tomar decisiones claves cada semana. 
+                    El dashboard que desarrolló transformó completamente nuestra manera de operar."
+                    <footer>– Founder, Startup E-commerce (Sector Retail)</footer>
+                </div>
+                <div class="testimonial">
+                    "Explica lo complejo con una claridad que empodera. Su metodología práctica hace que todos en el equipo 
+                    puedan aplicar lo aprendido desde el día uno. Recomiendo 100% sus clases y consultorías."
+                    <footer>– Tech Lead, Fintech Argentina</footer>
+                </div>
+                <div class="testimonial">
+                    "Necesitábamos un MVP rápido y escalable. AETHERYON entregó en tiempo, con calidad superior y nos capacitó 
+                    para mantenerlo. Ahora tenemos autonomía técnica."
+                    <footer>– CEO, SaaS Healthcare</footer>
+                </div>
+            </div>
+        </section>
+        
+        <section id="agendar" class="card">
+            <div class="card-content">
+                <h2>📅 Agendá tu Consulta Estratégica</h2>
+                <p>
+                    ¿Querés llevar tu startup al siguiente nivel? Coordiná una sesión de 30 minutos donde analizaremos 
+                    tus necesidades y diseñaremos una solución a medida.
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">15min</div>
+                        <div class="stat-label">Respuesta inicial</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Consulta sin compromiso</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">48hs</div>
+                        <div class="stat-label">Propuesta técnica</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://calendly.com/guido-agraound" target="_blank" class="cta-btn">
+                        Agendar en Calendly
+                    </a>
+                    <a href="mailto:contacto@agraound.site?subject=Consulta%20AETHERYON%20Systems" class="cta-btn cta-secondary">
+                        Enviar Email
+                    </a>
+                </div>
+                
+                <p style="text-align: center; margin-top: 30px; color: var(--text-secondary);">
+                    O escríbenos directamente a: <strong style="color: var(--primary-cyan);">contacto@agraound.site</strong>
+                </p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="stats-grid" style="margin-bottom: 30px;">
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Años de experiencia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Proyectos completados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Startups asesoradas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfacción cliente</div>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.2rem; margin: 20px 0;">
+                <strong>"Tecnología con forma humana"</strong>
+            </p>
+            <p>© 2024 - 2025 AETHERYON Systems | Agraound. Todos los derechos reservados.</p>
+            <p>Consultor: Guido Miguel Gómez | CUIT: 20397656900</p>
+            <p>📧 contacto@agraound.site | 🔗 <a href="https://www.linkedin.com/in/gomezguido278/" target="_blank" style="color: var(--primary-cyan);">LinkedIn</a></p>
+        </footer>
     </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                document.body.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Interactive pricing cards
+        document.querySelectorAll('.package-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Dynamic stats counter animation
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Animate stats when visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && !statNumber.dataset.animated) {
+                        const text = statNumber.textContent;
+                        const number = parseInt(text.replace(/\D/g, ''));
+                        const suffix = text.replace(/[\d]/g, '');
+                        statNumber.dataset.suffix = suffix;
+                        statNumber.dataset.animated = 'true';
+                        animateValue(statNumber, 0, number, 2000);
+                    }
+                }
+            });
+        });
+        
+        document.querySelectorAll('.stat-card').forEach(card => {
+            statsObserver.observe(card);
+        });
+    </script>
+</body>
 </html>
