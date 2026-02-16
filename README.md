@@ -93,6 +93,7 @@ Siempre utilizar imports absolutos desde la raíz del proyecto.
 Ejemplo conceptual:
 
 from domain.logger import Logger 
+
 from application.use_cases.generate_dialogue import GenerateDialogueUseCase
 
 Ejecutar el sistema desde la raíz usando:
