@@ -92,11 +92,12 @@ Siempre utilizar imports absolutos desde la raíz del proyecto.
 
 Ejemplo conceptual:
 
-from domain.logger import Logger from application.use_cases.generate_dialogue import GenerateDialogueUseCase
+from domain.logger import Logger 
+from application.use_cases.generate_dialogue import GenerateDialogueUseCase
 
 Ejecutar el sistema desde la raíz usando:
 
-python -m interfaces.cli
+python -m interfaces-cli.py
 
 Evitar ejecutar módulos internos directamente.
 
